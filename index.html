@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="de">
+	<head>
+		<title>Rechnung</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">	
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>  
+		<script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+		<link href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" rel="stylesheet" type="text/css" />  
+		<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/i18n/jquery-ui-i18n.min.js"></script>  
+		<script type="text/javascript">  
+			$(document).ready(function() {  
+				var options = $.extend({}, $.datepicker.regional["de"], { dateFormat: "dd.mm.yy" });  
+				$(".datepicker").datepicker(options);  
+			});  
+		</script>  
+		<link rel="stylesheet" type="text/css" href="style.css">
+		<link rel="stylesheet" type="text/css" href="layout.css">
+	</head>
+	<body>
+		<div id="Grid">
+			<div id="Document" class="mar-b10">
+				<ul id="rprtmnt"></ul>
+			</div>
+			<div id="Logo">
+				<span class="sp">SP:</span><span class="horvat">Horvat</span>
+			</div>
+			<div id="TvSat" class="sm">
+				<div>TV, SAT, IT@Internet, Kaffeeautomaten...ServicePartner</div>
+				<div class="mar-b8">innoRaum WERK... Identity : Quality</div>
+			</div>
+			<div id="Buros" class="smb pad-l5">
+				<div><input type="checkbox" name="address" id="address0" onclick="selectAddress(0)"> <label for="address0"><span>73098 Rechberghausen, Kirchplaz 6</span></label>, Tel. <strong>07161 582200</strong></div>
+				<div><input type="checkbox" name="address" id="address1" onclick="selectAddress(1)"> <label for="address1"><span>73033 Göppingen, Marshallstraße 18</span></label>, <strong>www.innoraum.de</strong></div>
+				<div class="mar-b28"></div>
+			</div>
+		</div>
+		<div id="Grid1">
+			<div id="Buro" class="sm"></div>
+			<div id="Kunde" class="bor-rb">
+				<div><input type="text" name="name"></div>
+				<div><input type="text" name="adresse"></div>
+				<div><input type="text" name="tefon"></div>
+				<div><input type="text" name="email"></div>
+			</div>
+			<div id="Info">
+				<div class="sm pad-l5">E-Mail: sphorvat@hotmail.de</div>
+				<div class="sm pad-l5">Bankverbindung: Kreissparkasse Göppingen</div>
+				<div class="sm pad-l5">IBAN: DE73 6105 0000 0000 1271 10, BIC: GOPSDE6GXXX</div>
+				<div class="sm pad-l5">inhaber &amp; Geschäftführer: Toni Horvat, Meister Techniker</div>
+				<div class="sm pad-l5">IT-System &amp; Geräte Techniker Nicolas Ischka</div>
+				<div class="sm pad-l5 mar-b16">IT-System Elektroniker Thomas Hahn</div>
+			</div>
+			<div id="AuftragDatum" class="bor-rb mar-l-5">
+				<div class="x-sm">Auftragsanname am</div>
+				<input type="text" class="datepicker">
+			</div>
+			<div id="LieferungDatum" class="bor-rb mar-l-5">
+		        <div class="x-sm">Lieferung / Leistung am</div>
+				<input type="text" class="datepicker">
+			</div>
+			<div id="RechnungsNr" class="bor-rb mar-l-5">
+				<div class="x-sm">Rechnungs-Nr.</div>
+				<input type="text">
+			</div>
+			<div id="RechnungsDatum" class="bor-rb mar-l-5">
+				<div class="x-sm">Rechnungs-Datum</div>
+				<input type="text" class="datepicker">
+			</div>
+			<div id="Bemerkung" class="x-sm bold mar-l-5">Bemerkung  zahlung und ruckfragen bitte angeben</div>
+		</div>
+		<div>
+			<div class="bor-rb pad-b10">
+				<div class="x-sm">Angaben des Kunden</div>
+				<input type="text">
+				<input type="text">
+			</div>
+		</div>
+		<div>
+			<div class="bor-r mar-r10 pad-b10">
+				<div class="x-sm">Auszufuhrende Arbeiten / Monteurbericht</div>
+				<input type="text">
+				<input type="text">
+			</div>
+		</div>
+		<div id="Grid2">
+			<div id="Fabrikat" class="bor-rbl mar-b5">
+				<div class="x-sm">Fabrikat</div>
+				<input type="text">
+			</div>
+			<div id="Typen" class="bor-rbl mar-b5 cor-mar-r10">
+				<div class="x-sm">Typen</div>
+				<input type="text">
+			</div>
+			<div id="FertigungsNr" class="bor-rbl mar-b5">
+				<div class="x-sm">Fertigungs-Nr.</div>
+				<input type="text">
+			</div>
+			<div id="Kaufdatum" class="bor-rbl mar-b5 mar-r10">
+				<div class="x-sm">Kaufdatum</div>
+				<input type="text" class="datepicker">
+			</div>
+		</div>
+		<div id="Grid3">
+			<div id="Grid31">
+				<div id="Arbeit" class="x-sm bold bor-r cor-mar-r10">Arbeitszeit</div>
+				<div class="Datum x-sm bor-r">Datum</div>
+				<div class="Tatigkeit x-sm bor-r">Tätigkeit (Monteur)</div>
+				<div class="AW x-sm bor-r cor-mar-r10">AW</div>
+			</div>
+			<div id="Grid32" class="mar-r10">
+				<div id="Material" class="x-sm bold pad-l5">Materialverbrauch</div>
+				<div class="Anzal x-sm bor-r">Anzal</div>
+				<div class="Bezeichnung x-sm bor-r">Bezeichnung</div>
+				<div class="Einzelpreis x-sm bor-r">Einzelpreis &euro;</div>
+				<div class="Gesamtpreis x-sm bor-r">Gesamtpreis &euro;</div>
+			</div>
+		</div>
+		<div class="Grid4">
+			<div class="Arbeitzeit">
+				<div class="Datum sm bor-r"><input type="text" class="datepicker"></div>
+				<div class="Tatigkeit sm bor-r mar-l5"><input type="text"></div>
+				<div class="AW sm bor-r cor-mar-r10 mar-l5"><input type="text"></div>
+			</div>
+			<div class="Materialverbrauch mar-r10">
+				<div class="Anzal sm bor-r mar-l5"><input type="number"></div>
+				<div class="Bezeichnung sm bor-r mar-l5"><input type="text"></div>
+				<div class="Einzelpreis sm bor-r"><input type="number" step="0.01"></div>
+				<div class="Gesamtpreis sm bor-r mar-l5"><input type="number" step="0.01" readonly></div>
+			</div>
+		</div>
+		<div class="Grid4">
+			<div class="Arbeitzeit">
+				<div class="Datum sm bor-r"><input type="text" class="datepicker"></div>
+				<div class="Tatigkeit sm bor-r mar-l5"><input type="text"></div>
+				<div class="AW sm bor-r cor-mar-r10 mar-l5"><input type="text"></div>
+			</div>
+			<div class="Materialverbrauch mar-r10">
+				<div class="Anzal sm bor-r mar-l5"><input type="number"></div>
+				<div class="Bezeichnung sm bor-r mar-l5"><input type="text"></div>
+				<div class="Einzelpreis sm bor-r"><input type="number" step="0.01"></div>
+				<div class="Gesamtpreis sm bor-r mar-l5"><input type="number" step="0.01" readonly></div>
+			</div>
+		</div>
+		<div class="Grid4">
+			<div class="Arbeitzeit">
+				<div class="Datum sm bor-r"><input type="text" class="datepicker"></div>
+				<div class="Tatigkeit sm bor-r mar-l5"><input type="text"></div>
+				<div class="AW sm bor-r cor-mar-r10 mar-l5"><input type="text"></div>
+			</div>
+			<div class="Materialverbrauch mar-r10">
+				<div class="Anzal sm bor-r mar-l5"><input type="number"></div>
+				<div class="Bezeichnung sm bor-r mar-l5"><input type="text"></div>
+				<div class="Einzelpreis sm bor-r"><input type="number" step="0.01"></div>
+				<div class="Gesamtpreis sm bor-r mar-l5"><input type="number" step="0.01" readonly></div>
+			</div>
+		</div>
+		<div class="Grid4">
+			<div class="Arbeitzeit">
+				<div class="Datum sm bor-r"><input type="text" class="datepicker"></div>
+				<div class="Tatigkeit sm bor-r mar-l5"><input type="text"></div>
+				<div class="AW sm bor-r cor-mar-r10 mar-l5"><input type="text"></div>
+			</div>
+			<div class="Materialverbrauch mar-r10">
+				<div class="Anzal sm bor-r mar-l5"><input type="number"></div>
+				<div class="Bezeichnung sm bor-r mar-l5"><input type="text"></div>
+				<div class="Einzelpreis sm bor-r"><input type="number" step="0.01"></div>
+				<div class="Gesamtpreis sm bor-r mar-l5"><input type="number" step="0.01" readonly></div>
+			</div>
+		</div>
+		<div class="Grid4">
+			<div class="Arbeitzeit">
+				<div class="Datum sm bor-r"><input type="text" class="datepicker"></div>
+				<div class="Tatigkeit sm bor-r mar-l5"><input type="text"></div>
+				<div class="AW sm bor-r cor-mar-r10 mar-l5"><input type="text"></div>
+			</div>
+			<div class="Materialverbrauch mar-r10">
+				<div class="Anzal sm bor-r mar-l5"><input type="number"></div>
+				<div class="Bezeichnung sm bor-r mar-l5"><input type="text"></div>
+				<div class="Einzelpreis sm bor-r"><input type="number" step="0.01"></div>
+				<div class="Gesamtpreis sm bor-r mar-l5"><input type="number" step="0.01" readonly></div>
+			</div>
+		</div>
+		<div class="Grid4">
+			<div class="Arbeitzeit">
+				<div class="Datum sm bor-r"><input type="text" class="datepicker"></div>
+				<div class="Tatigkeit sm bor-r mar-l5"><input type="text"></div>
+				<div class="AW sm bor-r cor-mar-r10 mar-l5"><input type="text"></div>
+			</div>
+			<div class="Materialverbrauch mar-r10">
+				<div class="Anzal sm bor-r mar-l5"><input type="number"></div>
+				<div class="Bezeichnung sm bor-r mar-l5"><input type="text"></div>
+				<div class="Einzelpreis sm bor-r"><input type="number" step="0.01"></div>
+				<div class="Gesamtpreis sm bor-r mar-l5"><input type="number" step="0.01" readonly></div>
+			</div>
+		</div>
+		<div class="Grid4">
+			<div class="Arbeitzeit">
+				<div class="Datum sm bor-r"><input type="text" class="datepicker"></div>
+				<div class="Tatigkeit sm bor-r mar-l5"><input type="text"></div>
+				<div class="AW sm bor-r cor-mar-r10 mar-l5"><input type="text"></div>
+			</div>
+			<div class="Materialverbrauch mar-r10">
+				<div class="Anzal sm bor-r mar-l5"><input type="number"></div>
+				<div class="Bezeichnung sm bor-r mar-l5"><input type="text"></div>
+				<div class="Einzelpreis sm bor-r"><input type="number" step="0.01"></div>
+				<div class="Gesamtpreis sm bor-r mar-l5"><input type="number" step="0.01" readonly></div>
+			</div>
+		</div>
+		<div class="Grid4">
+			<div class="Arbeitzeit">
+				<div class="Datum sm bor-r"><input type="text" class="datepicker"></div>
+				<div class="Tatigkeit sm bor-r mar-l5"><input type="text"></div>
+				<div class="AW sm bor-r cor-mar-r10 mar-l5"><input type="text"></div>
+			</div>
+			<div class="Materialverbrauch mar-r10">
+				<div class="Anzal sm bor-r mar-l5"><input type="number"></div>
+				<div class="Bezeichnung sm bor-r mar-l5"><input type="text"></div>
+				<div class="Einzelpreis sm bor-r"><input type="number" step="0.01"></div>
+				<div class="Gesamtpreis sm bor-r mar-l5"><input type="number" step="0.01" readonly></div>
+			</div>
+		</div>
+		<div class="Grid4">
+			<div class="Arbeitzeit">
+				<div class="Datum sm bor-r"><input type="text" class="datepicker"></div>
+				<div class="Tatigkeit sm bor-r mar-l5"><input type="text"></div>
+				<div class="AW sm bor-r cor-mar-r10 mar-l5"><input type="text"></div>
+			</div>
+			<div class="Materialverbrauch mar-r10">
+				<div class="Anzal sm bor-r mar-l5"><input type="number"></div>
+				<div class="Bezeichnung sm bor-r mar-l5"><input type="text"></div>
+				<div class="Einzelpreis sm bor-r"><input type="number" step="0.01"></div>
+				<div class="Gesamtpreis sm bor-r mar-l5"><input type="number" step="0.01" readonly></div>
+			</div>
+		</div>
+		<div class="Grid4">
+			<div class="Arbeitzeit">
+				<div class="Datum sm bor-r"><input type="text" class="datepicker"></div>
+				<div class="Tatigkeit sm bor-r mar-l5"><input type="text"></div>
+				<div class="AW sm bor-r cor-mar-r10 mar-l5"><input type="text"></div>
+			</div>
+			<div class="Materialverbrauch mar-r10">
+				<div class="Anzal sm bor-r mar-l5"><input type="number"></div>
+				<div class="Bezeichnung sm bor-r mar-l5"><input type="text"></div>
+				<div class="Einzelpreis sm bor-r"><input type="number" step="0.01"></div>
+				<div class="Gesamtpreis sm bor-r mar-l5"><input type="number" step="0.01" readonly></div>
+			</div>
+		</div>
+		<div class="Grid4">
+			<div class="Arbeitzeit">
+				<div class="Datum sm bor-r"><input type="text" class="datepicker"></div>
+				<div class="Tatigkeit sm bor-r mar-l5"><input type="text"></div>
+				<div class="AW sm bor-r cor-mar-r10 mar-l5"><input type="text"></div>
+			</div>
+			<div class="Materialverbrauch mar-r10">
+				<div class="Anzal sm bor-r mar-l5"><input type="number"></div>
+				<div class="Bezeichnung sm bor-r mar-l5"><input type="text"></div>
+				<div class="Einzelpreis sm bor-r"><input type="number" step="0.01"></div>
+				<div class="Gesamtpreis sm bor-r mar-l5"><input type="number" step="0.01" readonly></div>
+			</div>
+		</div>
+		<div class="Grid4">
+			<div class="Arbeitzeit">
+				<div class="Datum sm bor-r"><input type="text" class="datepicker"></div>
+				<div class="Tatigkeit sm bor-r mar-l5"><input type="text"></div>
+				<div class="AW sm bor-r cor-mar-r10 mar-l5"><input type="text"></div>
+			</div>
+			<div class="Materialverbrauch mar-r10">
+				<div class="Anzal sm bor-r mar-l5"><input type="number"></div>
+				<div class="Bezeichnung sm bor-r mar-l5"><input type="text"></div>
+				<div class="Einzelpreis sm bor-r"><input type="number" step="0.01"></div>
+				<div class="Gesamtpreis sm bor-r mar-l5"><input type="number" step="0.01" readonly></div>
+			</div>
+		</div>
+		<div class="Grid4">
+			<div class="Arbeitzeit">
+				<div class="Datum sm bor-r"><input type="text" class="datepicker"></div>
+				<div class="Tatigkeit sm bor-r mar-l5"><input type="text"></div>
+				<div class="AW sm bor-r cor-mar-r10 mar-l5"><input type="text"></div>
+			</div>
+			<div class="Materialverbrauch mar-r10">
+				<div class="Anzal sm bor-r mar-l5"><input type="number"></div>
+				<div class="Bezeichnung sm bor-r mar-l5"><input type="text"></div>
+				<div class="Einzelpreis sm bor-r"><input type="number" step="0.01"></div>
+				<div class="Gesamtpreis sm bor-r mar-l5"><input type="number" step="0.01" readonly></div>
+			</div>
+		</div>
+		<div class="Grid4">
+			<div class="Arbeitzeit">
+				<div class="Datum sm bor-r"><input type="text" class="datepicker"></div>
+				<div class="Tatigkeit sm bor-r mar-l5"><input type="text"></div>
+				<div class="AW sm bor-r cor-mar-r10 mar-l5"><input type="text"></div>
+			</div>
+			<div class="Materialverbrauch mar-r10">
+				<div class="Anzal sm bor-r mar-l5"><input type="number"></div>
+				<div class="Bezeichnung sm bor-r mar-l5"><input type="text"></div>
+				<div class="Einzelpreis sm bor-r"><input type="number" step="0.01"></div>
+				<div class="Gesamtpreis sm bor-r mar-l5"><input type="number" step="0.01" readonly></div>
+			</div>
+		</div>
+		<div class="Grid4">
+			<div class="Arbeitzeit">
+				<div class="Datum sm bor-r"><input type="text" class="datepicker"></div>
+				<div class="Tatigkeit sm bor-r mar-l5"><input type="text"></div>
+				<div class="AW sm bor-r cor-mar-r10 mar-l5"><input type="text"></div>
+			</div>
+			<div class="Materialverbrauch mar-r10">
+				<div class="Anzal sm bor-r mar-l5"><input type="number"></div>
+				<div class="Bezeichnung sm bor-r mar-l5"><input type="text"></div>
+				<div class="Einzelpreis sm bor-r"><input type="number" step="0.01"></div>
+				<div class="Gesamtpreis sm bor-r mar-l5"><input type="number" step="0.01" readonly></div>
+			</div>
+		</div>
+		<div class="Grid4">
+			<div class="Arbeitzeit">
+				<div class="Datum sm bor-r"><input type="text" class="datepicker"></div>
+				<div class="Tatigkeit sm bor-r mar-l5"><input type="text"></div>
+				<div class="AW sm bor-r cor-mar-r10 mar-l5"><input type="text"></div>
+			</div>
+			<div class="Materialverbrauch mar-r10">
+				<div class="Anzal sm bor-r mar-l5"><input type="number"></div>
+				<div class="Bezeichnung sm bor-r mar-l5"><input type="text"></div>
+				<div class="Einzelpreis sm bor-r"><input type="number" step="0.01"></div>
+				<div class="Gesamtpreis sm bor-r mar-l5"><input type="number" step="0.01" readonly></div>
+			</div>
+		</div>
+		<div class="Grid4">
+			<div class="Arbeitzeit">
+				<div class="Datum sm bor-r"><input type="text" class="datepicker"></div>
+				<div class="Tatigkeit sm bor-r mar-l5"><input type="text"></div>
+				<div class="AW sm bor-r cor-mar-r10 mar-l5"><input type="text"></div>
+			</div>
+			<div class="Materialverbrauch mar-r10">
+				<div class="Anzal sm bor-r mar-l5"><input type="number"></div>
+				<div class="Bezeichnung sm bor-r mar-l5"><input type="text"></div>
+				<div class="Einzelpreis sm bor-r"><input type="number" step="0.01"></div>
+				<div class="Gesamtpreis sm bor-r mar-l5"><input type="number" step="0.01" readonly></div>
+			</div>
+		</div>
+		<div class="Grid4">
+			<div class="Arbeitzeit">
+				<div class="Datum sm bor-r bor-b mar-b5"><input type="text" class="datepicker"></div>
+				<div class="Tatigkeit sm bor-r bor-b mar-b5 mar-l5"><input type="text"></div>
+				<div class="AW sm bor-r cor-mar-r10 bor-b mar-b5 mar-l5"><input type="text"></div>
+			</div>
+			<div class="Materialverbrauch mar-r10">
+				<div class="Anzal sm bor-r bor-b pad-l5 mar-b5 mar-l5"><input type="number"></div>
+				<div class="Bezeichnung sm bor-r bor-b pad-l5 mar-b5 mar-l5"><input type="text"></div>
+				<div class="Einzelpreis sm bor-r"><input type="number" step="0.01"></div>
+				<div class="Gesamtpreis sm bor-r mar-l5"><input type="number" step="0.01" readonly></div>
+			</div>
+		</div>
+		<div id="Grid5">
+			<div class="Gesamt mar-r10">
+				<div class="Gesamt-Reihe">
+					<div class="Beschreibung x-sm pad-l5">Material gesamt</div>
+					<div class="Preis bor-r"></div>
+					<div class="Wert sm mar-l5 bor-r"><input type="number" step="0.01"></div>
+				</div>
+				<div class="Gesamt-Reihe">
+					<div class="Beschreibung x-sm pad-l5">Kleinmaterial</div>
+					<div class="Preis bor-r"></div>
+					<div class="Wert sm mar-l5 bor-r"><input type="number" step="0.01"></div>
+				</div>
+				<div class="Gesamt-Reihe">
+					<div class="Beschreibung x-sm pad-l5">VDE-Prüfung</div>
+					<div class="Preis bor-r"></div>
+					<div class="Wert sm mar-l5 bor-r"><input type="number" step="0.01"></div>
+				</div>
+				<div class="Gesamt-Reihe">
+					<div class="Beschreibung x-sm pad-l5">Arbeitseinheiten</div>
+					<div class="Menge sm"><input type="number" step="0.01"></div>
+					<div class="X xx-sm">x</div>
+					<div class="Preis sm bor-r"><input type="number" step="0.01"></div>
+					<div class="Wert sm mar-l5 bor-r"><input type="number" step="0.01" readonly></div>
+				</div>
+				<div class="Gesamt-Reihe">
+					<div class="Beschreibung x-sm pad-l5">Arbeitseinheiten</div>
+					<div class="Menge sm"><input type="number" step="0.01"></div>
+					<div class="X xx-sm">x</div>
+					<div class="Preis sm bor-r"><input type="number" step="0.01"></div>
+					<div class="Wert sm mar-l5 bor-r"><input type="number" step="0.01" readonly></div>
+				</div>
+				<div class="Gesamt-Reihe bor-b mar-b5">
+					<div class="Beschreibung x-sm pad-l5">Fahrtkostenantail</div>
+					<div class="Preis sm bor-r"></div>
+					<div class="Wert sm mar-l5 bor-r"><input type="number" step="0.01"></div>
+				</div>
+			</div>
+			<div id="Zwischensumme" class="mar-r10">
+				<div class="Halb x-sm bor-r">
+					<div class="Al-selfC">Zwischensumme</div>
+					<div><input type="number" step="0.01" readonly></div>
+				</div>
+			</div>
+			<div id="Rechnungsbetrag">		
+				<div class="Halb x-sm bor-rb">
+					<div class="Al-selfC pad-b10">% MWSt.</div>			
+					<input type="number" step="0.01" readonly>
+				</div>
+				<div class="x-sm bold mar-r10 bor-r">Rechnungsbetrag</div>
+				<div class="bor-r mar-r10"><input type="number" step="0.01" readonly></div>
+				<div class="bor-rb"></div>
+			</div>
+			<div id="Vde" class="bor-r bor-b cor-mar-r10">
+				<div class="mar-b5 x-sm"><input type="checkbox" id="vde1"> <label for="vde1">Arbeiten abgeschlossen</label></div>
+				<div class="mar-b5 x-sm"><input type="checkbox" id="vde2"> <label for="vde2">Gerät nach VDE geprüft</label></div>
+				<div class="mar-b5 x-sm"><input type="checkbox" id="vde3"> <label for="vde3">Arbeiten nicht abgeschlossen</label></div>
+				<div class="mar-b5 x-sm"><input type="checkbox" id="vde4"> <label for="vde4">Arbeit nach VDE geprüft</label></div>
+				<div class="x-sm"><input type="checkbox" id="vde5"> <label for="vde5">weitere Arbeiten arforderlich</label></div>
+				<div class="x-sm"><input type="text" placeholder="..."></div>
+			</div>
+			<div id="Reklame" class="mar-b10">
+				<div class="xx-sm">In den berechneten Arbeitsstunden sind Materialbeshafing und Werkstattzeit anthalten. Reparaturen sind sofort one jeden Abzug zahlbar. Die gelieferte Ware bleibt bis zut vollständigen Bezahlung unser Eigentum. Für den Auftrag gelten unsere umseitig abgedruckten und im Ladenlokal aushängenden Allgemeinen Geschäftsbedinungen. <strong>Reklamationen nur gegen Vorlage dieses Belegs</strong></div>
+			</div>
+			<div id="Geschaftbedinungen" class="bor-rb">
+				<div class="x-sm">Auftrag zu unseren Allgemeinen</div>
+				<div class="x-sm">Geschäftbedinungen ertailt.</div>
+				<div class="x-sm">Datum, Unterschrift</div>
+				<input type="text" class="datepicker">
+				<div></div>
+			</div>
+			<div id="Auftrag" class="bor-rb">
+				<div class="x-sm">Auftrag ordnunggemäss</div>
+				<div class="x-sm">ausgeführt.</div>
+				<div class="x-sm">Datum, Unterschrift</div>
+				<input type="text" class="datepicker">
+				<div></div>
+			</div>
+			<div id="Betrag" class="bor-rb">
+				<div class="x-sm">Betrag danken erhalten.</div>
+				<div id="Geld">
+					<div><input type="checkbox" id="bar"> <label for="bar" class="x-sm">bar</label></div>
+					<div><input type="checkbox" id="Karte"> <label for="karte" class="x-sm">Karte</label></div>
+					<div><input type="text" id="geld-item" placeholder="..."></div>
+				</div>
+				<div class="x-sm">Datum, Unterschrift</div>
+				<input type="text" class="datepicker">
+				<div class=""></div>
+			</div>
+		</div>
+		<div id="Band">
+			<div class="rot"></div>
+			<div class="sp" style="font-size: 0.9em;padding-right: 3px;">ServicePartner</div>
+			<div class="rot mar-r10"></div>
+		</div>
+		<script src="sphorvat.js"></script>
+	</body>
+</html>

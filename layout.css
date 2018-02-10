@@ -1,0 +1,314 @@
+/* Elemetni za Grid */
+#Document {
+	grid-area: document;
+	align-self: center;
+	justify-self: start;
+}
+#Logo {
+	grid-area: logo;
+}
+#TvSat {
+	grid-area: tvsat;
+}
+#Buros {
+	grid-area: buros;
+}
+/* Elementi za Grid1 */
+#Buro {
+	grid-area: buro;
+}
+#Kunde {
+	grid-area: kunde;
+	align-items: center;
+}
+#Info {
+	grid-area: info;
+}
+#AuftragDatum {
+	grid-area: auftragDatum;
+}
+#LieferungDatum {
+	grid-area: lieferungDatum;
+}
+#RechnungsNr {
+	grid-area: rechnungsNr;
+}
+#RechnungsDatum {
+	grid-area: rechnungsDatum;
+}
+#Bemerkung {
+	grid-area: bemerkung;
+}
+/* Elementi za Grid2*/
+#Fabrikat {
+	grid-area: fabrikat;
+}
+#Typen {
+	grid-area: typen;
+}
+#FertigungsNr {
+	grid-area: fertigungsNr;
+}
+#Kaufdatum {
+	grid-area: kaufdatum;
+}
+#Arbeit {
+	grid-area: arbeit;
+}
+#Material {
+	grid-area: material;
+}
+/* Elementi za Arbeit -> Grid4*/
+.Datum {
+	grid-area: datum;
+}
+.Tatigkeit {
+	grid-area: tatigkeit;
+}
+.AW {
+	grid-area: aw;
+}
+/* Elemetni za Materialverbrauch -> Grid4*/
+.Anzal {
+	grid-area: anzal;
+}
+.Bezeichnung {
+	grid-area: bezeichnung;
+}
+.Einzelpreis {
+	grid-area: einzelpreis;
+}
+.Gesamtpreis {
+	grid-area: gesamtpreis;
+}
+.Beschreibung {
+	grid-area: beschreibung;
+	align-self: center;
+}
+.Menge {
+	grid-area: menge;
+}
+.X {
+	grid-area: x;
+	align-self: center;
+	justify-self: center;
+}
+.Preis {
+	grid-area: preis;
+}
+.Wert {
+	grid-area: wert;
+}
+.Gesamt {
+	grid-area: gesamt;
+}
+/* Elementi za Grid5*/
+#Zwischensumme {
+	grid-area: zwischensumme;
+}
+#Reklame {
+	grid-area: reklame;
+}
+.Arbeitzeit {
+	display: grid;
+	grid-area: arbeitzeit;
+	grid-template-columns: 1.55fr 3.95fr 1fr;
+	grid-template-areas: 
+	"datum tatigkeit aw";
+}
+.Materialverbrauch {
+	display: grid;
+	grid-area: materialverbrauch;
+	grid-template-columns: 0.75fr 2.75fr 1.2fr 1.5fr;
+	grid-template-areas: 
+	"anzal bezeichnung einzelpreis gesamtpreis";
+}
+#Rechnungsbetrag {
+	grid-area: rechnungsbetrag;
+	display: grid;
+	grid-template-rows: auto 1.5em auto 1em;
+}
+#Band {
+	display: grid;
+	grid-template-columns: 1fr auto 1fr;
+	margin-top: 0.9em;
+}
+.Halb {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	align-content: center;
+}
+#Geld {
+	display: grid;
+	grid-template-columns: 2fr 2.7fr 5fr;
+	align-content: center;
+}
+#Geschaftbedinungen {
+	grid-area: geschaftbedinungen;
+	display: grid;
+	grid-template-rows: auto 1.2em auto auto 1em;
+}
+#Auftrag {
+	grid-area: auftrag;
+	display: grid;
+	grid-template-rows: auto 1.2em auto auto 1em;
+}
+#Betrag {
+	grid-area: betrag;
+	display: grid;
+	grid-template-rows: auto 1.2em auto auto 1em;
+}
+#Vde {
+	grid-area: vde;		
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+}
+.Gesamt-Reihe {
+	display: grid;
+	grid-template-columns: 1.55fr 1fr 0.2fr 1.2fr 1.5fr;
+	grid-template-areas: "beschreibung menge x preis wert"
+}
+#Grid31 {
+	display: grid;
+	grid-area: grid31;
+	grid-template-columns: 1.55fr 3.95fr 1fr;
+	grid-template-areas:
+	"arbeit arbeit arbeit"
+	"datum tatigkeit aw";
+}
+#Grid32 {
+	display: grid;
+	grid-area: grid32;
+	grid-template-columns: 0.75fr 2.75fr 1.2fr 1.5fr;
+	grid-template-areas:
+	"material material material material" 
+	"anzal bezeichnung einzelpreis gesamtpreis";
+}
+@media screen {
+	#Logo {
+		margin-bottom: 20px;
+	}
+	#Buro {
+		display: none;
+	}
+	#Info {
+		display: none;
+	}
+	#Bemerkung {
+		display: none;
+	}
+	#Reklame {
+		display: none;
+	}
+	#Band {
+		display: none;
+	}
+	#Grid {
+		display: grid;
+		grid-template-columns: 1fr;
+		grid-template-areas:
+		"logo"
+		"document"
+		"buros";
+	}
+	#Grid1 {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		grid-template-areas:
+		"kunde kunde"
+		"auftragDatum lieferungDatum"
+		"rechnungsNr rechnungsDatum";
+	}
+	#Grid2 {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		grid-template-areas:
+		"fabrikat typen"
+		"fertigungsNr kaufdatum";
+	}
+	#Grid3 {
+		display: grid;
+		grid-template-columns: 1fr;
+		grid-template-areas:
+		"grid31"
+		"grid32";
+	}
+	.Grid4 {
+		display: grid;
+		grid-template-columns: 1fr;
+		grid-template-areas:
+		"arbeitzeit"
+		"materialverbrauch";
+	}
+	#Grid5 {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		grid-template-areas:
+		"gesamt gesamt"
+		". zwischensumme"
+		"betrag rechnungsbetrag"
+		"vde vde"
+		"geschaftbedinungen auftrag";
+	}
+/*	@media (min-width: 1200px) {
+		body {
+			font-size: 24px;
+			color: red;
+		}
+	} */
+}
+@media only print, only screen and (min-width: 768px) {
+	.cor-mar-r10 {
+		margin-right: 0;
+	}
+	#Grid {
+		display: grid;
+		grid-template-columns: 1fr 50px 1fr;
+		grid-template-areas:
+		"document logo  logo "
+		"document tvsat tvsat"
+		"document buros buros";
+	}
+	#Grid1 {
+		display: grid;
+		grid-template-columns: 2fr 16px 1fr 34px 1fr;
+		grid-template-areas:
+		"buro  info info info info"
+		"kunde info info info info"
+		"kunde auftragDatum auftragDatum lieferungDatum lieferungDatum"
+		"  .   rechnungsNr rechnungsNr rechnungsDatum rechnungsDatum"
+		"  .   bemerkung   bemerkung   bemerkung      bemerkung";
+	}
+	#Grid2 {
+		display: grid;
+		grid-template-columns: 1fr 1fr 1fr 1fr;
+		grid-template-areas:
+		"fabrikat typen fertigungsNr kaufdatum";
+	}
+	#Grid3 {
+		display: grid;
+		grid-template-columns: 1fr 1.25fr;
+		grid-template-areas:
+		"grid31 grid32";
+	}
+	.Grid4 {
+		display: grid;
+		grid-template-columns: 1fr 1.25fr;
+		grid-template-areas:
+		"arbeitzeit materialverbrauch";
+	}
+	#Grid5 {
+		display: grid;
+		grid-template-columns: 1fr 1fr 0.165fr 1fr 1.085fr;
+		grid-template-areas:
+		"vde vde vde gesamt gesamt"
+		"reklame reklame reklame gesamt gesamt"
+		"reklame reklame reklame . zwischensumme"
+		"geschaftbedinungen auftrag betrag betrag rechnungsbetrag";
+	}
+}
+@media print {
+	body {
+		font-size: 12px;
+	}
+} 
